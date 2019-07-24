@@ -7,11 +7,10 @@ function preload() {
 
 function setup() {
   graph = new Graph();
-  dropdown = createSelect();
-  dropdown.changed(bfs);
+  buildData();
   noCanvas();
   //console.log(data);
-  buildData();
+
 }
 
 
@@ -20,6 +19,8 @@ function draw() {
 }
 function buildData(){
 
+    dropdown = createSelect();
+    dropdown.changed(bfs);
     var movies = data.movies;
 
     for (var i = 0; i < movies.length; i++){
@@ -43,6 +44,8 @@ function buildData(){
 
 }
 function bfs(){
+  //This is the implementation of Breadth-First Search Algo
+  //in JS with done on Coding Train and Wikipedia.
   graph.reset();
 
     //var start = graph.setStart("Kevin Bacon");
