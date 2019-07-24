@@ -11,34 +11,37 @@ function setup() {
   dropdown.changed(bfs);
   noCanvas();
   //console.log(data);
-
-  var movies = data.movies;
-
-  for (var i = 0; i < movies.length; i++){
-    var movie = movies[i].title;
-    var cast = movies[i].cast;
-    var movieNode = new Node(movie);
-    graph.addNode(movieNode);
-
-    for (var j = 0;j < cast.length; j++){
-      var actor = cast[j];
-      var actorNode = graph.getNode(actor);
-      if (actorNode == undefined){
-        actorNode = new Node(actor);
-        dropdown.option(actor);
-      }
-      graph.addNode(actorNode);
-      movieNode.addEdge(actorNode);
-      //console.log(actor);
-    }
-  }
+  buildData();
 }
 
 
 function draw() {
 
 }
+function buildData(){
 
+    var movies = data.movies;
+
+    for (var i = 0; i < movies.length; i++){
+      var movie = movies[i].title;
+      var cast = movies[i].cast;
+      var movieNode = new Node(movie);
+      graph.addNode(movieNode);
+
+      for (var j = 0;j < cast.length; j++){
+        var actor = cast[j];
+        var actorNode = graph.getNode(actor);
+        if (actorNode == undefined){
+          actorNode = new Node(actor);
+          dropdown.option(actor);
+        }
+        graph.addNode(actorNode);
+        movieNode.addEdge(actorNode);
+        //console.log(actor);
+      }
+    }
+
+}
 function bfs(){
   graph.reset();
 
@@ -54,7 +57,7 @@ function bfs(){
       var current = queue.shift();
       //console.log(current.value);
       if (current == end ){
-        console.log("Found "+ current.value);
+        //console.log("Found "+ current.value);
         break;
       }
       var edges = current.edges;
