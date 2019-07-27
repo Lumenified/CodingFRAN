@@ -104,7 +104,7 @@ function draw() {
     return;
 
   }
-  background(0);
+  background(255);
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; j++) {
       grid[i][j].show(color(255));
@@ -126,6 +126,14 @@ function draw() {
   }
 
   for (var i = 0; i < path.length; i++) {
-    path[i].show(color(0, 0, 255));
+    //path[i].show(color(0, 0, 255));
   }
+	noFill();
+	stroke(255, 0, 200);
+	strokeWeight(w/2);
+	beginShape();
+	for (var i = 0; i < path.length; i++) {
+	    vertex(path[i].i*w + w/2,path[i].j*h + h/2);
+	  }
+	endShape();
 }
