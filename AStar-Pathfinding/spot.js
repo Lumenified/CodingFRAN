@@ -7,7 +7,7 @@ function Spot(i, j) {
   this.neighbours = [];
   this.previous = undefined;
   this.wall = false;
-  if (random(1) < 0.5) {
+  if (random(1) < 0.3) {
     this.wall = true;
   }
   this.show = function(col) {
